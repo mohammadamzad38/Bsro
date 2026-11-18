@@ -4,6 +4,9 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './modules/users/user.module.js';
+import { TicketsModule } from './modules/tickets/tickets.module.js';
+import { CommentsModule } from './modules/comments/comments.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -21,6 +24,12 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
         uri: configService.getOrThrow<string>('MONGODB_URL'),
       }),
     }),
+
+    UserModule,
+
+    TicketsModule,
+
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
