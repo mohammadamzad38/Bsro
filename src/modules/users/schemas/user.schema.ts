@@ -10,7 +10,6 @@ export class User {
 
   @Prop({
     required: true,
-    unique: true,
     trim: true,
     lowercase: true,
     maxLength: 100,
@@ -19,6 +18,9 @@ export class User {
 
   @Prop({ required: true, select: false })
   password: string;
+
+  @Prop({ type: String, default: null, select: false })
+  refreshTokenHash: string | null;
 
   @Prop({ type: Types.ObjectId, ref: 'Role', required: true })
   role: Types.ObjectId;
@@ -30,6 +32,6 @@ export class User {
   isvarified: boolean;
 }
 
-export const userSchema = SchemaFactory.createForClass(User);
-userSchema.index({ email: 1 }, { unique: true });
-userSchema.index({ role: 1 });
+export const UserSchema = SchemaFactory.createForClass(User);
+UserSchema.index({ email: 1 }, { unique: true });
+UserSchema.index({ role: 1 });

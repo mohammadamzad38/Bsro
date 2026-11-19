@@ -4,12 +4,11 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-<<<<<<< HEAD
 import { UserModule } from './modules/users/user.module.js';
 import { TicketsModule } from './modules/tickets/tickets.module.js';
 import { CommentsModule } from './modules/comments/comments.module.js';
-=======
->>>>>>> a71b664b140ae5491f67360eae849b7d9e26c6b0
+import { RolesModule } from './modules/roles/roles.module.js';
+import { AuthModule } from './modules/auth/auth.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -27,15 +26,12 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
         uri: configService.getOrThrow<string>('MONGODB_URL'),
       }),
     }),
-<<<<<<< HEAD
 
     UserModule,
-
     TicketsModule,
-
     CommentsModule,
-=======
->>>>>>> a71b664b140ae5491f67360eae849b7d9e26c6b0
+    RolesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
